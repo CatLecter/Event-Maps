@@ -102,8 +102,10 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.idea
 .env
 .venv
+idea/
 env/
 venv/
 ENV/
@@ -129,4 +131,4 @@ dmypy.json
 .pyre/
 
 # Security
-keys.py
+config.py

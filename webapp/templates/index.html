@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey={{ apikey }}&lang=ru_RU" type="text/javascript"></script>
+    <title>{{ page_title }}</title>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [{{ latitude }}, {{ longitude }}],
+                zoom: {{ use_zoom }}
+            });
+        }
+    </script>
+  </head>
+  <body style="background: linear-gradient(to bottom right, #0099ff 0%, #66ffcc 100%);">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+
+        <!-- Начало контейнера для новостей -->
+
+          <h1 align="center" style="color: yellowgreen">News</h1>
+          <div class="container" align="center" style="width: 1600px; height: 800px">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col" style="width: 440px; height: 350px">
+                <div class="card h-100">
+                  <img src="https://findicons.com/files/icons/208/peter_griffin/300/peter_griffin_football_zoomed_2.png" class="card-img-top" style="width: 75%; height: 75%" alt="Описание картинки">
+                  <div class="card-body">
+                    <h5 class="card-title">Первая новость</h5>
+                    <p class="card-text">Описание новости.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="width: 440px; height: 350px">
+                <div class="card h-100">
+                  <img src="https://avatanplus.ru/files/resources/original/57443acb55913154e285aa56.png" class="card-img-top" style="width: 75%; height: 75%" alt="Описание картинки">
+                  <div class="card-body">
+                    <h5 class="card-title">Вторая новость</h5>
+                    <p class="card-text">Описание новости.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="width: 440px; height: 350px">
+                <div class="card h-100">
+                  <img src="https://cdn.iconscout.com/icon/free/png-512/red-among-us-3218512-2691060.png" class="card-img-top" style="width: 75%; height: 75%" alt="Описание картинки">
+                  <div class="card-body">
+                    <h5 class="card-title">Третья новость.</h5>
+                    <p class="card-text">Описание новости.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="width: 440px; height: 350px">
+                <div class="card h-100">
+                  <img src="https://png.pngtree.com/png-clipart/20190613/original/pngtree-tree-icon-png-image_3566053.jpg" class="card-img-top"  style="width: 75%; height: 75%" alt="Описание картинки">
+                  <div class="card-body">
+                    <h5 class="card-title">Четвёртная новость.</h5>
+                    <p class="card-text">Описание новости.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="width: 440px; height: 350px">
+                <div class="card h-100">
+                  <img src="https://assets.turbologo.ru/blog/ru/2021/01/18161443/rebranding.png" class="card-img-top"  style="width: 75%; height: 75%" alt="Описание картинки">
+                  <div class="card-body">
+                    <h5 class="card-title">Пятая новость.</h5>
+                    <p class="card-text">Описание новости.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="width: 440px; height: 350px">
+                <div class="card h-100">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTP8GUOZ7_IzLLBqjqic60Nwu9O0nRrMkFpQ&usqp=CAU" class="card-img-top"  style="width: 75%; height: 75%" alt="Описание картинки">
+                  <div class="card-body">
+                    <h5 class="card-title">Шестая новость.</h5>
+                    <p class="card-text">Описание новости.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- Конец контейнера для новостей -->
+
+        </div>
+        <div class="carousel-item">
+
+        <!-- Начало контейнера для карты -->
+
+          <h1 align="center" style="color: yellowgreen">Yandex Map</h1>
+          <div class="container" id="map" style="width: 1600px; height: 800px"></div>
+
+        <!-- Конец контейнера для карты -->
+>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>      
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
