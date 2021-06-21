@@ -1,4 +1,4 @@
-import requests
+# import requests
 from flask import Flask, render_template
 
 from webapp.map import fetch_coordinates
@@ -19,7 +19,7 @@ def create_app():
         return render_template(
             "index.html",
             apikey=app.config["YANDEX_MAPS_API_KEY"],
-            page_title="Event Area",
+            page_title="Neighbors",
             longitude=coordinates[0],
             latitude=coordinates[1],
             use_zoom=17,
