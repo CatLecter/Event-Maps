@@ -1,6 +1,6 @@
-# import requests
 from flask import Flask, render_template
 
+from webapp.forms import LoginForm
 from webapp.map import fetch_coordinates
 
 
@@ -23,6 +23,16 @@ def create_app():
             longitude=coordinates[0],
             latitude=coordinates[1],
             use_zoom=17,
+        )
+
+    @app.route("/login")
+    def login():
+        title = "Neighbors - Авторизация"
+        login_form = LoginForm()
+        return render_template(
+            "login.html",
+            page_title="Neighbors - Авторизация",
+            form=login_form,
         )
 
     return app

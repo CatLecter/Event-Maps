@@ -10,7 +10,7 @@ def add_user(
     first_name,
     last_name,
     email,
-    login,
+    login=email.split("@")[0],
     password,
     home_address="",
     work_address="",
