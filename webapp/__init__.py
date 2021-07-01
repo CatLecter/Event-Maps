@@ -1,38 +1,30 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask_login import LoginManager
 
-from webapp.forms import LoginForm
-from webapp.map import fetch_coordinates
+from webapp.db import db
+from webapp.user.models import User
+from webapp.admin.views import blueprint as admin_blueprint
+from webapp.user.views import blueprint as user_blueprint
+from webapp.map.views import blueprint as map_blueprint
+from webapp.news.views import blueprint as news_blueprint
 
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile("config.py")
+    db.init_app(app)
 
-    @app.route("/")
-    def index():
-        coordinates = fetch_coordinates(
-            app.config["YANDEX_MAPS_API_KEY"],
-            "Москва, Хохловский пер., 7/9 строение 2",
-        )
-        print(coordinates)
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = "user.login"
 
-        return render_template(
-            "index.html",
-            apikey=app.config["YANDEX_MAPS_API_KEY"],
-            page_title="Neighbors",
-            longitude=coordinates[0],
-            latitude=coordinates[1],
-            use_zoom=17,
-        )
+    app.register_blueprint(admin_blueprint)
+    app.register_blueprint(user_blueprint)
+    app.register_blueprint(map_blueprint)
+    app.register_blueprint(news_blueprint)
 
-    @app.route("/login")
-    def login():
-        title = "Neighbors - Авторизация"
-        login_form = LoginForm()
-        return render_template(
-            "login.html",
-            page_title="Neighbors - Авторизация",
-            form=login_form,
-        )
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)
 
     return app

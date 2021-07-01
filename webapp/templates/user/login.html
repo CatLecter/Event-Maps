@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="width: 18rem; margin: 30vh auto; background:#F5F5F5; box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);">
+  <div class="card-body">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-warning" role="alert">
+          {% for message in messages %}
+            {{ message }}<br>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% endwith %}
+    <form action="{{ url_for('user.process_login') }}" method="POST">
+      <h2 class="h5 fw-normal">Авторизация</h2>
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.login() }}
+      </div>
+      <div class="row" style="height: 10px"></div>
+      <div class="form-group">
+        {{ form.email() }}
+      </div>
+      <div class="row" style="height: 10px"></div>
+      <div class="form-group">
+        {{ form.password() }}
+      </div>
+      <div class="form-group form-check">
+        {{ form.remember_me() }}
+        {{ form.remember_me.label(class_="form-check-label") }}
+      </div>
+      <div class="row" style="height: 10px"></div>
+      {{ form.submit }}
+    </form>
+  </div>
+</div>
+{% endblock %}
