@@ -1,22 +1,16 @@
 .container_map {
     width: 100vh;
-    height: 83.33vh;
+    height: 82.7vh;
     margin: 0px auto;
 }
 
 .container {
-    max-width: 1400px;
-    max-height: 900px;
+    max-width: 70%;
+    max-height: 60%;
     min-width: 480px;
     min-height: 270px;
     margin: 0px auto;
-    padding: 0px 15px;
-}
-@media (max-width: 1400px) and (max-height: 900px) {
-    .container {
-        max-width: 100%;
-        max-height: 100%;
-    }
+    padding: 15px 15px;
 }
 
 .content-block__column {
@@ -25,8 +19,10 @@
 }
 
 .user-block__column {
+    height: 84vh;
+    width: 300px;
     flex: 0 1 20%;
     padding: 15px 15px;
-    background:#F5F5F5;
+    background: #E1DCE2;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }

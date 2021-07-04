@@ -1,12 +1,10 @@
-from flask import Blueprint, redirect, render_template, url_for
-from flask_login import current_user
+from flask import Blueprint, render_template
+
+blueprint = Blueprint("map", __name__)
 
 
-blueprint = Blueprint("map", __name__, url_prefix="/map")
-
-
-@blueprint.route("/ymaps")
-def map():
+@blueprint.route("/")
+def index():
     title = "HOME"
     return render_template(
         "map/ymaps.html",

@@ -3,6 +3,8 @@ from flask_login import LoginManager
 
 from webapp.db import db
 from webapp.user.models import User
+from webapp.event.models import Event
+from webapp.tag.models import Tag
 from webapp.admin.views import blueprint as admin_blueprint
 from webapp.user.views import blueprint as user_blueprint
 from webapp.map.views import blueprint as map_blueprint

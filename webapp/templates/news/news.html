@@ -1,38 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row" style="padding: 15px 15px;">
-  <div class="user-block__column">
-    <div class="card-body">Данные пользователя</div>
-  </div>
-  <div class="content-block__column">
+<ul class="timeline">
+  <li class="timeline-item bg-white rounded ml-3 p-4 shadow" >
+    <div class="timeline-arrow"></div>
     <div class="row">
-      <div class="card h-100">
-        <img src="#" class="card-img-top" alt="Описание картинки">
-        <div class="card-body">
-          <h5 class="card-title">Первая новость</h5>
-          <p class="card-text">Описание новости.</p>
-        </div>
+      <div class="col-lg-2 mx-auto">
+        <img src="https://bayguzin.ru/demo2014/blog_2014/images/pin3.jpg" style="width: 100%;">
+      </div>
+      <div class="col-lg-10 mx-auto">
+        <h2 class="h5 mb-0">Первая новость</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i> 21 March 2019</span>
+        <p class="text-small mt-2 font-weight-light">Описание новости.</p>
       </div>
     </div>
+  </li>
+  <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+    <div class="timeline-arrow"></div>
     <div class="row">
-      <div class="card h-100">
-        <img src="#" class="card-img-top" alt="Описание картинки">
-        <div class="card-body">
-          <h5 class="card-title">Вторая новость</h5>
-          <p class="card-text">Описание новости.</p>
-        </div>
+      <div class="col-lg-2 mx-auto">
+        <img src="https://bayguzin.ru/demo2014/blog_2014/images/pin5.jpg" style="width: 100%;">
+      </div>
+      <div class="col-lg-10 mx-auto">
+        <h2 class="h5 mb-0">Вторая новость</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i> 21 March 2019</span>
+        <p class="text-small mt-2 font-weight-light">Описание новости.</p>
       </div>
     </div>
-    <div class="row" style="width: 25vh height: 25vh;">
-      <div class="card h-100">
-        <img src="#" class="card-img-top" alt="Описание картинки">
-        <div class="card-body">
-          <h5 class="card-title">Третья новость.</h5>
-          <p class="card-text">Описание новости.</p>
-        </div>
+  </li>
+  <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+    <div class="timeline-arrow"></div>
+    <div class="row">
+      <div class="col-lg-2 mx-auto">
+        <img src="https://bayguzin.ru/demo2014/blog_2014/images/pin6.jpg" style="width: 100%;">
+      </div>
+      <div class="col-lg-10 mx-auto">
+        <h2 class="h5 mb-0">Третья новость</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i> 21 March 2019</span>
+        <p class="text-small mt-2 font-weight-light">Описание новости</p>
       </div>
     </div>
-  </div>
-</div>
+  </li>
+</ul>
 {% endblock %}

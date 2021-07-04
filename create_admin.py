@@ -3,7 +3,7 @@ import sys
 
 from webapp import create_app
 from webapp.db import db
-from webapp.model import User
+from webapp.user.models import User
 
 
 app = create_app()
@@ -32,6 +32,7 @@ with app.app_context():
         password=password,
         first_name=first_name,
         last_name=last_name,
+        tags=["Python", "Learn", "Flask", "Cats", "Sleep"],
         role="admin",
     )
 
