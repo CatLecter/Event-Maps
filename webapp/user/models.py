@@ -4,15 +4,6 @@ from sqlalchemy.dialects.postgresql import JSON
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-"""
-tags = db.Table(
-    "user_tag",
-    db.Column("tag_id", db.Integer, db.ForeignKey("user.id"), primary_key=True),
-    db.Column("user_id", db.Integer, db.ForeignKey("tag.id"), primary_key=True),
-)
-"""
-
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     login = db.Column(db.String(50), index=True, unique=True)
@@ -21,7 +12,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
     address = db.Column(db.String)
-    tags = db.Column(JSON)
+    tag_id = db.Column(JSON)
     path_to_avatar = db.Column(db.String)
     role = db.Column(db.String(10), index=True)
 
@@ -37,3 +28,10 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"<Login: {self.login} id={self.id}>"
+
+
+tags = db.Table(
+    "user_tag",
+    db.Column("tag_id", db.Integer, db.ForeignKey("tag.id"), primary_key=True),
+    db.Column("user_id", db.Integer, db.ForeignKey("user.id"), primary_key=True),
+)
