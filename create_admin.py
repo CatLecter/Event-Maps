@@ -32,7 +32,6 @@ with app.app_context():
         password=password,
         first_name=first_name,
         last_name=last_name,
-        tags=["Python", "Learn", "Flask", "Cats", "Sleep"],
         role="admin",
     )
 
