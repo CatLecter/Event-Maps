@@ -17,6 +17,7 @@ with app.app_context():
         print("Пользователь с таким Login уже существует")
         sys.exit(0)
     email = input("Введите E-mail: ")
+    # tags = input("Введите тэг: ")
     if User.query.filter(User.email == email).count():
         print("Пользователь с таким E-mail уже существует")
         sys.exit(0)
@@ -32,7 +33,8 @@ with app.app_context():
         password=password,
         first_name=first_name,
         last_name=last_name,
-        role="admin",
+        # tags=tags,
+        # role="admin",
     )
 
     new_admin.set_password(password)

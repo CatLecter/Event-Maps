@@ -10,7 +10,7 @@
             },
             "properties": {
                 "balloonContentHeader": "<a href = \"https://learn.python.ru/\">Learn Python</a><br><span class=\"description\">Курсы по программированию</span>",
-                "balloonContentBody": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png\" height=\"150\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
+                "balloonContentBody": "<img src=\"https://www.python.org/static/community_logos/python-logo-master-v3-TM.png\" width=\"250px\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
                 "balloonContentFooter": "Информация предоставлена:<br/>https://learn.python.ru/",
                 "hintContent": "MoscowPython",
                 "clusterCaption": "Learn Python"
@@ -24,7 +24,7 @@
             },
             "properties": {
                 "balloonContentHeader": "<a href = \"https://learn.python.ru/\">Learn Python</a><br><span class=\"description\">Курсы по программированию</span>",
-                "balloonContentBody": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png\" height=\"150\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
+                "balloonContentBody": "<img src=\"/static/images/avatars/event/event_1.png\" height=\"150\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
                 "balloonContentFooter": "Информация предоставлена:<br/>https://learn.python.ru/",
                 "hintContent": "MoscowPython",
                 "clusterCaption": "Learn Python"
@@ -38,10 +38,9 @@
             },
             "properties": {
                 "balloonContentHeader": "<a href = \"https://learn.python.ru/\">Learn Python</a><br><span class=\"description\">Курсы по программированию</span>",
-                "balloonContentBody": "<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/2560px-Python_logo_and_wordmark.svg.png\" height=\"150\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
+                "balloonContentBody": "<img src=\"/static/images/avatars/event/event.jpg\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
                 "balloonContentFooter": "Информация предоставлена:<br/>https://learn.python.ru/",
-                "hintContent": "MoscowPython",
-                "clusterCaption": "Learn Python"
+                "hintContent": "MoscowPython"
             }
         }, {
             "type": "Feature",
@@ -51,11 +50,10 @@
                 "coordinates": [55.781329, 37.442781]
             },
             "properties": {
-                "balloonContentHeader": "Заголовок",
-                "balloonContentBody": "Основная часть",
-                "balloonContentFooter": "Футер",
-                "hintContent": "Текст подсказки",
-                "clusterCaption": "Еще одна метка"
+                "balloonContentHeader": "<a href = \"https://learn.python.ru/\">Learn Python</a><br><span class=\"description\">Курсы по программированию</span>",
+                "balloonContentBody": "<img src=\"/static/images/avatars/event/event_1.png\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
+                "balloonContentFooter": "Информация предоставлена:<br/>https://learn.python.ru/",
+                "hintContent": "MoscowPython"
             }
         }, {
             "type": "Feature",
@@ -65,11 +63,10 @@
                 "coordinates": [55.858585, 37.48498]
             },
             "properties": {
-                "balloonContentHeader": "Заголовок",
-                "balloonContentBody": "Основная часть",
-                "balloonContentFooter": "Футер",
-                "hintContent": "Текст подсказки",
-                "clusterCaption": "Еще одна метка"
+                "balloonContentHeader": "<a href = \"https://learn.python.ru/\">Learn Python</a><br><span class=\"description\">Курсы по программированию</span>",
+                "balloonContentBody": "<img src=\"/static/images/avatars/event/event_2.png\" width=\"200\"><br/><a href=\"tel:+7 495 178-00-83\">+7 495 178-00-83</a><br/><b>Impact Hub (м. Китай-город)</b><br/>Защита проектов 17.07.21 г.",
+                "balloonContentFooter": "Информация предоставлена:<br/>https://learn.python.ru/",
+                "hintContent": "MoscowPython"
             }
         }
     ]
