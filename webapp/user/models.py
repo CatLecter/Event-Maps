@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
         "Tag",
         secondary=users_tags,
         backref="user",
-        # lazy="dynamic"
+        lazy="dynamic"
     )
     path_to_avatar = db.Column(db.String)
     role = db.Column(db.String(10), index=True, default="user")

@@ -7,6 +7,8 @@ blueprint = Blueprint("news", __name__, url_prefix="/news")
 
 @blueprint.route("/news")
 def news():
+    if not current_user.is_authenticated:
+        return redirect(url_for("user.login"))
     title = "HOME"
     return render_template(
         "news/news.html",

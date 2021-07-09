@@ -1,32 +1,12 @@
-from datetime import datetime
+from flask_wtf import FlaskForm
+from wtforms import BooleanField, StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
 
-from webapp.db import db
 
-
-event_tags = db.Table(
-    "event_tags",
-    db.Model.metadata,
-    db.Column("event_id", db.Integer, db.ForeignKey("event.id"), primary_key=True),
-    db.Column("tag_id", db.Integer, db.ForeignKey("tag.id"), primary_key=True),
-)
-
+"""
 
 class Event(db.Model):
     __tablename__ = "event"
-
-    """
-    Список необходимых полей:
-       + event_id,
-       + event_url="#",
-       + event_header,
-       + second_header,
-       + event_description,
-       + avatar_url,
-       + creator_login,
-       + contact,
-       + address
-    """
-
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     creator_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     creator_login = db.Column(db.String, db.ForeignKey("user.login"), nullable=False)
@@ -48,3 +28,22 @@ class Event(db.Model):
 
     def __repr__(self):
         return f"<Event: {self.event_name} id={self.id}>"
+
+"""
+
+
+class EventRegForm(FlaskForm):
+    login = StringField(
+        "Login", validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Login"}
+    )
+    email = StringField(
+        "E-mail", validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "E-mail"}
+    )
+    password = PasswordField(
+        "Password", validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Password"}
+    )
+    remember_me = BooleanField("Запомнить меня", default=True, render_kw={"class": "form-check-input"})
+    submit = SubmitField("Login", render_kw={"class": "btn btn-primary fw-bolder"})
