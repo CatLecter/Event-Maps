@@ -6,19 +6,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('news.news') }}">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user.login') }}">Войти</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('user.logout') }}">Выйти</a>
-        </li>
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('event.event_reg') }}">Регистрация событий</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('news.news') }}">Новости</a>
+          </li>
+        {% endif %}
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Введите запрос" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Поиск</button>
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user.logout') }}">Выйти</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('user.login') }}">Войти</a>
+          </li>
+        {% endif %}
       </form>
     </div>
   </div>

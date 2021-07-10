@@ -8,6 +8,7 @@ from webapp.user.models import User
 from webapp.event.models import Event
 from webapp.tag.models import Tag
 from webapp.admin.views import blueprint as admin_blueprint
+from webapp.event.views import blueprint as event_blueprint
 from webapp.user.views import blueprint as user_blueprint
 from webapp.map.views import blueprint as map_blueprint
 from webapp.news.views import blueprint as news_blueprint
@@ -24,6 +25,7 @@ def create_app():
     login_manager.login_view = "user.login"
 
     app.register_blueprint(admin_blueprint)
+    app.register_blueprint(event_blueprint)
     app.register_blueprint(user_blueprint)
     app.register_blueprint(map_blueprint)
     app.register_blueprint(news_blueprint)

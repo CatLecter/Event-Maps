@@ -8,7 +8,7 @@ blueprint = Blueprint("map", __name__)
 def index():
     if not current_user.is_authenticated:
         return redirect(url_for("user.login"))
-    title = "HOME"
+    title = "Neighbros"
     return render_template(
         "map/ymaps.html",
         page_title=title,

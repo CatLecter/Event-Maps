@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="content-block__column">
-    <div
-        class="container_map"
-        id="events_map"
-        data-zoom="16"
-        data-lat="55.756001"
-        data-long="37.643255"
-        data-event="{{ url_for("static", filename='scripts/data.json') }}">
+    <div class="content-block__column">
+        <div
+            class="container_map"
+            id="events_map"
+            data-zoom="16"
+            data-lat="55.756001"
+            data-long="37.643255"
+            data-event="{{ url_for("static", filename='scripts/data.json') }}">
+        </div>
     </div>
-</div>
 {% endblock %}

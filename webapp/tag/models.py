@@ -7,4 +7,4 @@ class Tag(db.Model):
     tag = db.Column(db.String, index=True, nullable=False)
 
     def __repr__(self):
-        return f"<Tag: {self.tag} id={self.id}>"
+        return f"{self.tag}"

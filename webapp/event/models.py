@@ -32,19 +32,13 @@ class Event(db.Model):
     creator_login = db.Column(db.String, db.ForeignKey("user.login"), nullable=False)
     header = db.Column(db.String, nullable=False)
     second_header = db.Column(db.String)
-    url = db.Column(db.String, default="#")
+    event_url = db.Column(db.String, default="#")
     description = db.Column(db.Text, default="Описание отсутствует")
-    avatar = db.Column(db.String, default="/static/images/avatars/event/event.jpg")
+    avatar_url = db.Column(db.String, default="/static/images/avatars/event/event.jpg")
     address = db.Column(db.String, nullable=False)
     contacs = db.Column(db.String)
     create_date = db.Column(db.DateTime, default=datetime.utcnow)
-    tag = db.relationship(
-        "Tag",
-        secondary=event_tags,
-        backref="event",
-        # lazy="dynamic"
-    )
-    path_to_avatar = db.Column(db.String)
+    tag = db.relationship("Tag", secondary=event_tags, backref="event", lazy="dynamic")
 
     def __repr__(self):
         return f"<Event: {self.event_name} id={self.id}>"

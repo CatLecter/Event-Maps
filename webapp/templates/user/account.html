@@ -1,0 +1,46 @@
+{% if current_user.is_authenticated %}
+    <div class="col-3">
+        <div class="row" align="middle">
+            <div class="avatar-item">
+                <div class="avatar-hover_wrapper" style="width: 300px; height: 300px;">
+                    <div class="avatar-photo" style="background-image: url({{ current_user.path_to_avatar }});"></div>
+                    <div class="avatar-hover" id="parent">
+                        <a href="#" class="avatar-hover_icon fa fa-heart"></a>
+                        <div class="avatar-hover_middle">
+                            <a href="#" class="avatar-hover_icon fa fa-user"></a>
+                            <a href="#" class="avatar-hover_icon fa fa-envelope"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 7%;"></div>
+        <div class="user-block__column">
+            <div class="">
+                <div class="row" style="height: 10px"></div>
+                <h4>{{ current_user.first_name }} {{ current_user.last_name }}</h4>
+                <div class="row" style="height: 10px"></div>
+                <p class="text-muted">Логин<span>: </span><span>{{ current_user.login }}</span></p>
+                <div class="row" style="height: 10px"></div>
+                <p class="text-muted">E-mail <span>: </span><span><a href="#" class="text-pink">{{ current_user.email }}</a></span></p>
+                <div class="row" style="height: 10px"></div>
+                <p class="text-muted">Адресс<span>:<br> </span><span>{{ current_user.address }}</span></p>
+                <div class="row" style="height: 10px"></div>
+                <p class="text-muted">
+                    Интересы
+                    <span>:<br> </span>
+                    <span>
+                        {% for tag in current_user.tag %}
+                            <a href="#" class="text-pink">{{ tag }}</a>
+                            <span>; </span>
+                        {% endfor %}
+                    </span>
+                </p>
+                <div class="row" style="height: 10px"></div>
+            </div>
+            <div style="width: 100%">
+                <a href="#" class="btn btn-secondary active" role="button" aria-pressed="true">Редактировать профиль</a>
+            </div>
+        </div>
+    </div>
+{% endif %}

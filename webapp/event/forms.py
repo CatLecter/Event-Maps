@@ -1,49 +1,49 @@
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, StringField, PasswordField, SubmitField
+from wtforms import BooleanField, StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 
 
-"""
-
-class Event(db.Model):
-    __tablename__ = "event"
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    creator_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    creator_login = db.Column(db.String, db.ForeignKey("user.login"), nullable=False)
-    header = db.Column(db.String, nullable=False)
-    second_header = db.Column(db.String)
-    url = db.Column(db.String, default="#")
-    description = db.Column(db.Text, default="Описание отсутствует")
-    avatar = db.Column(db.String, default="/static/images/avatars/event/event.jpg")
-    address = db.Column(db.String, nullable=False)
-    contacs = db.Column(db.String)
-    create_date = db.Column(db.DateTime, default=datetime.utcnow)
-    tag = db.relationship(
-        "Tag",
-        secondary=event_tags,
-        backref="event",
-        # lazy="dynamic"
-    )
-    path_to_avatar = db.Column(db.String)
-
-    def __repr__(self):
-        return f"<Event: {self.event_name} id={self.id}>"
-
-"""
-
-
 class EventRegForm(FlaskForm):
-    login = StringField(
-        "Login", validators=[DataRequired()],
-        render_kw={"class": "form-control fw-lighter", "placeholder": "Login"}
+    header = StringField(
+        "Заголовок",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Заголовок"},
     )
-    email = StringField(
-        "E-mail", validators=[DataRequired()],
-        render_kw={"class": "form-control fw-lighter", "placeholder": "E-mail"}
+
+    second_header = StringField(
+        "Подзаголовок",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Подзаголовок"},
     )
-    password = PasswordField(
-        "Password", validators=[DataRequired()],
-        render_kw={"class": "form-control fw-lighter", "placeholder": "Password"}
+
+    address = StringField(
+        "Адрес",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Адрес"},
     )
-    remember_me = BooleanField("Запомнить меня", default=True, render_kw={"class": "form-check-input"})
-    submit = SubmitField("Login", render_kw={"class": "btn btn-primary fw-bolder"})
+
+    contacs = StringField(
+        "Контактные данные организатора",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Контакты организатора"},
+    )
+
+    event_url = StringField(
+        "Ссылка на страницу (при наличии)",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Ссылка на страницу"},
+    )
+
+    avatar_url = StringField(
+        "Аватар",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control fw-lighter",  "type": "file"},
+    )
+    
+    description = TextAreaField(
+        "Описание события",
+        validators=[DataRequired()],
+        render_kw={"class": "form-control", "id": "floatingTextarea", "style": "height: 150px"},
+    )
+
+    submit = SubmitField("Создать", render_kw={"class": "btn btn-primary fw-bolder"})

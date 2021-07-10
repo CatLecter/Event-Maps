@@ -12,7 +12,7 @@ blueprint = Blueprint("user", __name__, url_prefix="/users")
 def login():
     if current_user.is_authenticated:
         return redirect(url_for("map.index"))
-    title = "Добро пожаловать"
+    title = "Neighbros"
     login_form = LoginForm()
     return render_template(
         "user/login.html",
@@ -46,7 +46,7 @@ def logout():
 def reg():
     if current_user.is_authenticated:
         return redirect(url_for("map.index"))
-    title = "Регистрация"
+    title = "Neighbros"
     login_form = RegistrationForm()
     return render_template(
         "user/registration.html",
@@ -77,3 +77,19 @@ def process_reg():
             for error in errors:
                 flash(f"Ошибка в поле {getattr(form, field).label.text}: - {error}")
         return redirect(url_for("user.reg"))
+
+@blueprint.route("/account")
+def account():
+    if not current_user.is_authenticated:
+        return redirect(url_for("user.login"))
+    title = "Neighbros"
+    # some_user = current_user.query.filter_by(teg="#travel").count()
+    # User.query.filter_by(login="CatLecter").update(tag="#travel")
+    # db.session.commit()
+    # for tag in some_user.tag:
+    # print(some_user)
+
+    return render_template(
+        "user/account.html",
+        page_title=title,
+    )
