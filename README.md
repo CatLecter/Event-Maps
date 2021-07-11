@@ -31,5 +31,7 @@
 
 ##### $env:FLASK_APP="webapp"
 ##### flask db migrate -m "текст коммита"
+##### flask db upgrade
+
 ### 6) Обозначить миграцию как выполненную:
 ##### flask db stamp <Revision ID>

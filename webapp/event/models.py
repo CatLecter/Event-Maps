@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 from webapp.db import db
 
@@ -13,31 +14,29 @@ event_tags = db.Table(
 
 class Event(db.Model):
     __tablename__ = "event"
-
-    """
-    Список необходимых полей:
-       + event_id,
-       + event_url="#",
-       + event_header,
-       + second_header,
-       + event_description,
-       + avatar_url,
-       + creator_login,
-       + contact,
-       + address
-    """
-
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    creator_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    creator_login = db.Column(db.String, db.ForeignKey("user.login"), nullable=False)
-    header = db.Column(db.String, nullable=False)
+    creator_id = db.Column(
+        db.Integer,
+        db.ForeignKey("user.id"),
+        nullable=False,
+        index=True,
+    )
+    creator_login = db.Column(
+        db.String,
+        db.ForeignKey("user.login"),
+        nullable=False,
+        index=True,
+    )
+    header = db.Column(db.String, nullable=False, index=True)
     second_header = db.Column(db.String)
     event_url = db.Column(db.String, default="#")
     description = db.Column(db.Text, default="Описание отсутствует")
-    avatar_url = db.Column(db.String, default="/static/images/avatars/event/event.jpg")
-    address = db.Column(db.String, nullable=False)
+    avatar_url = db.Column(db.String, default="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png")
+    address = db.Column(db.String, nullable=False, index=True)
     contacs = db.Column(db.String)
-    create_date = db.Column(db.DateTime, default=datetime.utcnow)
+    date_start = db.Column(db.DateTime)
+    date_end = db.Column(db.DateTime)
+    create_date = db.Column(db.DateTime, default=datetime.now, index=True)
     tag = db.relationship("Tag", secondary=event_tags, backref="event", lazy="dynamic")
 
     def __repr__(self):

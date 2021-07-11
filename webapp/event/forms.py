@@ -37,7 +37,7 @@ class EventRegForm(FlaskForm):
     avatar_url = StringField(
         "Аватар",
         validators=[DataRequired()],
-        render_kw={"class": "form-control fw-lighter",  "type": "file"},
+        render_kw={"class": "form-control fw-lighter", "placeholder": "Ссылка на аватар"},
     )
     
     description = TextAreaField(

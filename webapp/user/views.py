@@ -30,9 +30,14 @@ def process_login():
             login_user(user, remember=form.remember_me.data)
             flash("Вы успешно вошли на сайт")
             return redirect(url_for("map.index"))
-
-    flash("Неправильно введены логин или пароль")
-    return redirect(url_for("user.login"))
+        else:
+            flash("Вы неверно ввели пароль")
+            return redirect(url_for("user.login"))
+    else:
+        for field, errors in form.errors.items():
+            for error in errors:
+                flash(f"Ошибка в поле {getattr(form, field).label.text}: - {error}")
+        return redirect(url_for("user.login"))
 
 
 @blueprint.route("/logout")
@@ -76,7 +81,8 @@ def process_reg():
         for field, errors in form.errors.items():
             for error in errors:
                 flash(f"Ошибка в поле {getattr(form, field).label.text}: - {error}")
-        return redirect(url_for("user.reg"))
+        return redirect(url_for("user.process_reg"))
+
 
 @blueprint.route("/account")
 def account():

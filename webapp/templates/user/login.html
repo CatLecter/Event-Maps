@@ -1,40 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="card-user">
-  <div class="card-body">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <div class="alert alert-warning" role="alert">
-          {% for message in messages %}
-            {{ message }}<br>
-          {% endfor %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert" style="width: 18rem;">
+          {{ message }}
         </div>
-      {% endif %}
-    {% endwith %}
-    <form action="{{ url_for('user.process_login') }}" method="POST">
-      <h2 class="h5 fw-normal">Авторизация</h2>
-      {{ form.hidden_tag() }}
-      <div class="row" style="height: 10px"></div>
-      <div class="form-group">
-        {{ form.email() }}
-      </div>
-      <div class="row" style="height: 10px"></div>
-      <div class="form-group">
-        {{ form.password() }}
-      </div>
-      <div class="row" style="height: 10px"></div>
-      <div class="form-group form-check">
-        {{ form.remember_me() }}
-        {{ form.remember_me.label(class_="form-check-label") }}
-      </div>
-      <div class="row" style="height: 10px"></div>
-      <div class="row">
-        {{ form.submit }}
+      {% endfor %}     
+    {% endif %}
+  {% endwith %}
+  <div class="card-user">
+    <div class="card-body">
+      <form action="{{ url_for('user.process_login') }}" method="POST">
+        <h2 class="h5 fw-normal">Авторизация</h2>
+        {{ form.hidden_tag() }}
         <div class="row" style="height: 10px"></div>
-        <a href="{{ url_for('user.reg') }}" class="btn btn-primary fw-bolder" role="button" aria-pressed="true">Регистрация</a>
-      </div>
-    </form>
+        <div class="form-group">
+          {{ form.email() }}
+        </div>
+        <div class="row" style="height: 10px"></div>
+        <div class="form-group">
+          {{ form.password() }}
+        </div>
+        <div class="row" style="height: 10px"></div>
+        <div class="form-group form-check">
+          {{ form.remember_me() }}
+          {{ form.remember_me.label(class_="form-check-label") }}
+        </div>
+        <div class="row" style="height: 10px"></div>
+        <div class="row">
+          {{ form.submit }}
+          <div class="row" style="height: 10px"></div>
+          <a href="{{ url_for('user.reg') }}" class="btn btn-primary fw-bolder" role="button" aria-pressed="true">Регистрация</a>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 {% endblock %}
