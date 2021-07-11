@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
-=======
-# import requests
-from flask import Flask, render_template
->>>>>>> 7d84db149ccea6c7f3c7a20dbc14ce57cdf0c301
 
 
 from webapp.db import db
@@ -35,27 +30,8 @@ def create_app():
     app.register_blueprint(map_blueprint)
     app.register_blueprint(news_blueprint)
 
-<<<<<<< HEAD
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
-=======
-    @app.route("/")
-    def index():
-        coordinates = fetch_coordinates(
-            app.config["YANDEX_MAPS_API_KEY"],
-            "Москва, Хохловский пер., 7/9 строение 2",
-        )
-        print(coordinates)
-
-        return render_template(
-            "index.html",
-            apikey=app.config["YANDEX_MAPS_API_KEY"],
-            page_title="Neighbors",
-            longitude=coordinates[0],
-            latitude=coordinates[1],
-            use_zoom=17,
-        )
->>>>>>> 7d84db149ccea6c7f3c7a20dbc14ce57cdf0c301
 
     return app
