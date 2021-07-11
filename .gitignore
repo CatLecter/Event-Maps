@@ -133,5 +133,5 @@ dmypy.json
 # Security
 config.py
 
-# Visual Studio Code # 
-.vscode/
+# Visual Studio Code #
+.vscode/*
