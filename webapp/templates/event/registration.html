@@ -37,8 +37,47 @@
         </div>
         <div class="row" style="height: 10px"></div>
         <div class="form-group">
-        <div class="row" style="height: 10px"></div>
           {{ form.avatar_url() }}
+        </div>
+        <div class="row" style="height: 10px"></div>
+        <div class="row">
+          {{ form.start_day.label }}
+          <div class="row" style="height: 10px"></div>
+          <div class="col-2">
+            {{ form.start_day() }}
+          </div>
+          <div class="col-2">
+            {{ form.start_month() }}
+          </div>
+          <div class="col-2">
+            {{ form.start_year() }}
+          </div>
+          <div class="col-2">
+            {{ form.start_hour() }}
+          </div>
+          <div class="col-2">
+            {{ form.start_minutes() }}
+          </div>          
+        </div>
+        <div class="row" style="height: 10px"></div>
+        <div class="row">
+          {{ form.end_day.label }}
+          <div class="row" style="height: 10px"></div>
+          <div class="col-2">
+            {{ form.end_day() }}
+          </div>
+          <div class="col-2">
+            {{ form.end_month() }}
+          </div>
+          <div class="col-2">
+            {{ form.end_year() }}
+          </div>
+          <div class="col-2">
+            {{ form.end_hour() }}
+          </div>
+          <div class="col-2">
+            {{ form.end_minutes() }}
+          </div>          
         </div>
         <div class="row" style="height: 10px"></div>
         <div class="form-group">

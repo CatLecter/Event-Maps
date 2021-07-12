@@ -132,6 +132,7 @@ dmypy.json
 
 # Security
 config.py
+run.bat
 
 # Visual Studio Code #
-.vscode/*
+.vscode/
