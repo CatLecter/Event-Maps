@@ -17,18 +17,18 @@
         <div class="row" style="height: 7%;"></div>
         <div class="user-block__column">
             <div class="">
-                <div class="row" style="height: 10px"></div>
+                <div class="row" style="height: 5px"></div>
                 <h4>{{ current_user.first_name }} {{ current_user.last_name }}</h4>
-                <div class="row" style="height: 10px"></div>
+                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">Логин<span>: </span><span>{{ current_user.login }}</span></p>
-                <div class="row" style="height: 10px"></div>
+                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">E-mail <span>: </span><span><a href="mailto: {{ current_user.email }}" class="text-pink">{{ current_user.email }}</a></span></p>
-                <div class="row" style="height: 10px"></div>
-                <p class="text-muted">Адресс<span>:<br> </span><span>{{ current_user.address }}</span></p>
-                <div class="row" style="height: 10px"></div>
+                <div class="row" style="height: 5px"></div>
+                <p class="text-muted">Адресс<span>: </span><span>{{ current_user.address }}</span></p>
+                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">
                     Интересы
-                    <span>:<br> </span>
+                    <span>: </span>
                     <span>
                         {% for tag in current_user.tag %}
                             <a href="#" class="text-pink">{{ tag }}</a>
@@ -36,7 +36,49 @@
                         {% endfor %}
                     </span>
                 </p>
-                <div class="row" style="height: 10px"></div>
+                <div class="row" style="height: 5px"></div>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            Созданные мной события:
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <p class="text-muted" align="left">
+                                <span>
+                                    {% for my_event in  my_events %}
+                                        {{  my_event }}<br>
+                                    {% endfor %}
+                                </span>
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height: 5px"></div>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                            События, на которые я записан:
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            <p class="text-muted" align="left">
+                                <span>
+                                    {% for my_event in  my_events %}
+                                        {{  my_event }}<br>
+                                    {% endfor %}
+                                </span>
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height: 5px"></div>
             </div>
             <div style="width: 100%">
                 <a href="#" class="btn btn-secondary active" role="button" aria-pressed="true">Редактировать профиль</a>

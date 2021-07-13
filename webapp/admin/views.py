@@ -7,7 +7,6 @@ blueprint = Blueprint("admin", __name__, url_prefix="/admin")
 @blueprint.route("/")
 @login_required
 def admin_index():
-    # title = "Панель администрирования"
     if current_user.is_admin:
         return "Привет, админ!"
     else:

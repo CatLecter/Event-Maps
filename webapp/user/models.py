@@ -1,10 +1,9 @@
 from datetime import datetime
 from flask_login import UserMixin
-
-# from sqlalchemy.dialects.postgresql import JSON
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from webapp.db import db
+from webapp.event.models import Event
 
 
 users_tags = db.Table(
@@ -36,6 +35,10 @@ class User(db.Model, UserMixin):
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
+
+    def get_my_events(self, login):
+        my_events = Event.query.filter_by(creator_login=login).all()
+        return my_events
 
     def check_password(self, password):
         return check_password_hash(self.password, password)

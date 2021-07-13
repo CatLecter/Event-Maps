@@ -34,4 +34,4 @@ class Event(db.Model):
     party = db.Column(db.String, default="К событию ещё никто не присоединился")
 
     def __repr__(self):
-        return f"<Event: {self.event_name} id={self.id}>"
+        return f"<Event id={self.id}>"
