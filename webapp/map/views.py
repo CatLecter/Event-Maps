@@ -3,6 +3,7 @@ from flask_login import current_user
 from flask import Blueprint, redirect, render_template, url_for
 
 from webapp.map.utils import fetch_coordinates
+# from webapp.event.balloon_content import mongo_connect
 from webapp.event.models import Event
 
 blueprint = Blueprint("map", __name__)
@@ -14,10 +15,26 @@ def index():
         return redirect(url_for("user.login"))
     title = "Neighbros"
     coordinate = fetch_coordinates(current_user.address)
+    
     created_user_events = Event.query.filter_by(creator_login=current_user.login).all()
     user_events = []
     for event in created_user_events:
         user_events.append(f"{event.start_date} - {event.header}")
+    
+    
+    """ 
+    received_events = []
+    all_events = mongo_connect.find({"properties"["hintContent"]: {"$lt": "#music"}})
+    print(all_events)
+    for some_event in all_events:
+        received_events.append(some_event) 
+    data = {
+        "type": "FeatureCollection",
+        "features": [received_events]
+    }
+    print(data)"""
+    
+    
     return render_template(
         "map/ymaps.html",
         page_title=title,

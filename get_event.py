@@ -1,6 +1,8 @@
+from pymongo import MongoClient
 from webapp import create_app
 
-from webapp.event.models import Event
+from webapp.config import MONGO_LINK
+# from webapp.event.models import Event
 
 
 app = create_app()
@@ -8,6 +10,26 @@ app = create_app()
 
 with app.app_context():
 
-    events = Event.query.filter_by(creator_login="vasi1988").all()
+
+    """
+    events = Event.query.filter_by(creator_login="CatLecter").all()
     for event in events:
-        print(f"{event.start_date} - {event.header}")
+        add_balloonContent(
+            event.address,
+            event.id,
+            event.event_url,
+            event.header,
+            event.second_header,
+            event.contacts,
+            event.creator_login,
+            event.avatar_url,
+            description="Описание отсутствует",
+        )
+    """
+
+client = MongoClient(MONGO_LINK)
+mongo_db = client.description
+collection = mongo_db.description
+
+search = collection.find({"properties": {"hintContent": "#learn"}})
+print(search)
