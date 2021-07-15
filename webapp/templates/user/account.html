@@ -19,13 +19,9 @@
             <div class="">
                 <div class="row" style="height: 5px"></div>
                 <h4>{{ current_user.first_name }} {{ current_user.last_name }}</h4>
-                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">Логин<span>: </span><span>{{ current_user.login }}</span></p>
-                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">E-mail <span>: </span><span><a href="mailto: {{ current_user.email }}" class="text-pink">{{ current_user.email }}</a></span></p>
-                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">Адресс<span>: </span><span>{{ current_user.address }}</span></p>
-                <div class="row" style="height: 5px"></div>
                 <p class="text-muted">
                     Интересы
                     <span>: </span>
@@ -36,7 +32,6 @@
                         {% endfor %}
                     </span>
                 </p>
-                <div class="row" style="height: 5px"></div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">

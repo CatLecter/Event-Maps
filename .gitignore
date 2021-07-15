@@ -133,6 +133,7 @@ dmypy.json
 # Security
 config.py
 run.bat
+data.json
 
 # Visual Studio Code #
 .vscode/

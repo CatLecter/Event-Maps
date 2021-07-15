@@ -22,7 +22,7 @@ class EventRegForm(FlaskForm):
         render_kw={"class": "form-control fw-lighter", "placeholder": "Адрес"},
     )
 
-    contacs = StringField(
+    contacts = StringField(
         "Контактные данные организатора",
         validators=[DataRequired()],
         render_kw={

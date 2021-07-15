@@ -17,7 +17,7 @@ def add_balloonContent(
     event_url,
     header,
     second_header,
-    contact,
+    contacts,
     creator_login,
     avatar_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU",
     description="Описание отсутствует",
@@ -33,22 +33,10 @@ def add_balloonContent(
         "id": event_id,
         "geometry": {"type": "Point", "coordinates": [latitude, longitude]},
         "properties": {
-            "balloonContentHeader": f'<a href = "{event_url}">{header}</a><br><span class="description">{second_header}</span>',
-            "balloonContentBody": f'<img src="{avatar_url}" width="200"><br/><a href="{contact}">{contact}</a><br/><b>{address}</b><br/>{description}',
-            "balloonContentFooter": f"Организатор:<br/>{creator_login}",
+            "balloonContentHeader": f"<a href = \"{event_url}\">{header}</a><br><span class=\"description\">{second_header}</span>",
+            "balloonContentBody": f"<img src=\"{avatar_url}\" width=\"200\"><br/><a href=\"{contacts}\">{contacts}</a><br/><b>{address}</b><br/>{description}",
+            "balloonContentFooter": f"<a class=\"btn btn-warning\" href=\"#\" role=\"button\">Принять участие</a>",
             "hintContent": f"{tags}",
         },
     }
     mongo_connect().insert_one(balloonContent)
-
-
-"""
-def get_balloon_id(event_id):-
-    balloon_id = mongo_connect().find_one({"id": event_id})["_id"]
-    return balloon_id
-
-
-
-events = mongo_connect.find({"properties": "hintContent"})
-print(events)
-"""

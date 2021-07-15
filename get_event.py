@@ -31,5 +31,5 @@ client = MongoClient(MONGO_LINK)
 mongo_db = client.description
 collection = mongo_db.description
 
-search = collection.find({"properties": {"hintContent": "#learn"}})
+search = collection.find_one({"id": 8})
 print(search)
