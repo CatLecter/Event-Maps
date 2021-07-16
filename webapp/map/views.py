@@ -1,14 +1,15 @@
 import json
 import os
+
 from flask_login import current_user
 from flask import Blueprint, redirect, render_template, url_for
 from pymongo import MongoClient
 
 from webapp.config import MONGO_LINK
 from webapp.map.utils import fetch_coordinates
-
-from webapp.event.balloon_content import mongo_connect
+from webapp.map.forms import ChoiceAllForm, ChoiceRecommendedForm, ChoiceCreatedForm
 from webapp.event.models import Event
+from webapp.event.balloon_content import create_ballon_json
 
 blueprint = Blueprint("map", __name__)
 
@@ -17,46 +18,18 @@ blueprint = Blueprint("map", __name__)
 def index():
     if not current_user.is_authenticated:
         return redirect(url_for("user.login"))
-    title = "Neighbros"
+    title = "EVENTS"
     coordinate = fetch_coordinates(current_user.address)
 
     created_events = Event.query.filter_by(creator_login=current_user.login).all()
+    # created_events = Event.query.order_by(Event.id).all()
+
+    # create_ballon_json(created_events)
+
     user_events = []
-    received_balloon = []
-
-    client = MongoClient(MONGO_LINK)
-    mongo_db = client.description
-    collection = mongo_db.description
-
     for event in created_events:
         user_events.append(f"{event.start_date} - {event.header}")
-        balloon_data = collection.find_one({"id": event.id})
-        latitude = float(balloon_data["geometry"]["coordinates"][0])
-        longitude = float(balloon_data["geometry"]["coordinates"][1])
-        receiv_description = {
-            "type": balloon_data["type"],
-            "id": balloon_data["id"],
-            "geometry": {
-                "type": balloon_data["geometry"]["type"],
-                "coordinates": [latitude, longitude],
-            },
-            "properties": {
-                "balloonContentHeader": balloon_data["properties"][
-                    "balloonContentHeader"
-                ],
-                "balloonContentBody": balloon_data["properties"]["balloonContentBody"],
-                "balloonContentFooter": balloon_data["properties"][
-                    "balloonContentFooter"
-                ],
-                "hintContent": balloon_data["properties"]["hintContent"],
-            },
-        }
-        received_balloon.append(receiv_description)
-    balloons = {"type": "FeatureCollection", "features": received_balloon}
-    balloons_json = json.dumps(balloons, sort_keys=True, indent=4)
-    with open("data.json", "w") as write_file:
-        json.dump(balloons_json, write_file)
-    os.replace("data.json", "webapp/static/data.json")
+
     return render_template(
         "map/ymaps.html",
         page_title=title,
@@ -66,3 +39,32 @@ def index():
         data=url_for("static", filename="data.json"),
         my_events=user_events,
     )
+
+
+@blueprint.route("/process-choice-all", methods=["POST"])
+def process_choice_all():
+    form = ChoiceAllForm()
+    if form.validate_on_submit():
+        all_events = Event.query.order_by(Event.id).all()
+        create_ballon_json(all_events)
+    return redirect(url_for("map.index"))
+
+
+@blueprint.route("/process-choice-recommended", methods=["POST"])
+def process_choice_recommended():
+    form = ChoiceRecommendedForm()
+    if form.validate_on_submit():
+        recommended_events = Event.query.filter_by(
+            creator_login=current_user.login
+        ).all()
+        create_ballon_json(recommended_events)
+    return redirect(url_for("map.index"))
+
+
+@blueprint.route("/process-choice-created", methods=["POST"])
+def process_choice_created():
+    form = ChoiceCreatedForm()
+    if form.validate_on_submit():
+        created_events = Event.query.filter_by(creator_login=current_user.login).all()
+        create_ballon_json(created_events)
+    return redirect(url_for("map.index"))

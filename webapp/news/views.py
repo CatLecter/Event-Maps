@@ -9,7 +9,7 @@ blueprint = Blueprint("news", __name__, url_prefix="/news")
 def news():
     if not current_user.is_authenticated:
         return redirect(url_for("user.login"))
-    title = "Neighbros"
+    title = "EVENTS"
     return render_template(
         "news/news.html",
         page_title=title,

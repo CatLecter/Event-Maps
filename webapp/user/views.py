@@ -12,7 +12,7 @@ blueprint = Blueprint("user", __name__, url_prefix="/users")
 def login():
     if current_user.is_authenticated:
         return redirect(url_for("map.index"))
-    title = "Neighbros"
+    title = "EVENTS"
     login_form = LoginForm()
     return render_template(
         "user/login.html",
@@ -51,7 +51,7 @@ def logout():
 def reg():
     if current_user.is_authenticated:
         return redirect(url_for("map.index"))
-    title = "Neighbros"
+    title = "EVENTS"
     login_form = RegistrationForm()
     return render_template(
         "user/registration.html",

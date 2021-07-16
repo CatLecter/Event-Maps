@@ -13,7 +13,7 @@ blueprint = Blueprint("event", __name__, url_prefix="/event")
 def event_reg():
     if not current_user.is_authenticated:
         return redirect(url_for("user.login"))
-    title = "Neighbros"
+    title = "EVENTS"
     login_form = EventRegForm()
     return render_template(
         "event/registration.html",

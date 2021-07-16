@@ -19,32 +19,26 @@
             <div class="">
                 <div class="row" style="height: 5px"></div>
                 <h4>{{ current_user.first_name }} {{ current_user.last_name }}</h4>
-                <p class="text-muted">Логин<span>: </span><span>{{ current_user.login }}</span></p>
-                <p class="text-muted">E-mail <span>: </span><span><a href="mailto: {{ current_user.email }}" class="text-pink">{{ current_user.email }}</a></span></p>
-                <p class="text-muted">Адресс<span>: </span><span>{{ current_user.address }}</span></p>
-                <p class="text-muted">
-                    Интересы
-                    <span>: </span>
-                    <span>
-                        {% for tag in current_user.tag %}
-                            <a href="#" class="text-pink">{{ tag }}</a>
-                            <span>; </span>
-                        {% endfor %}
-                    </span>
-                </p>
+
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            Созданные мной события:
+                            Данные профиля:
                         </button>
                         </h2>
                         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                            <p class="text-muted" align="left">
+                            <p class="text-muted">Логин<span>: </span><span>{{ current_user.login }}</span></p>
+                            <p class="text-muted">E-mail <span>: </span><span><a href="mailto: {{ current_user.email }}" class="text-pink">{{ current_user.email }}</a></span></p>
+                            <p class="text-muted">Адресс<span>: </span><span>{{ current_user.address }}</span></p>
+                            <p class="text-muted">
+                                Интересы
+                                <span>: </span>
                                 <span>
-                                    {% for my_event in  my_events %}
-                                        {{  my_event }}<br>
+                                    {% for tag in current_user.tag %}
+                                        <a href="#" class="text-pink">{{ tag }}</a>
+                                        <span>; </span>
                                     {% endfor %}
                                 </span>
                             </p>
@@ -52,12 +46,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="height: 5px"></div>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
-                            События, на которые я записан:
+                            Созданные мной события:
                         </button>
                         </h2>
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -76,7 +69,20 @@
                 <div class="row" style="height: 5px"></div>
             </div>
             <div style="width: 100%">
-                <a href="#" class="btn btn-secondary active" role="button" aria-pressed="true">Редактировать профиль</a>
+                <h6 align="left">Отобразить события:</h6>
+                <div class="btn-group">
+                    <form action="{{ url_for('map.process_choice_all') }}" method="POST">
+                        <a href="{{ url_for('map.index') }}" class="btn btn-primary fw-bolder" role="button" aria-pressed="true">Все</a>
+                    </form>
+                    <div class="col" style="width: 5px;"></div>
+                    <form action="{{ url_for('map.process_choice_recommended') }}" method="POST">
+                        <a href="{{ url_for('map.index') }}" class="btn btn-secondary fw-bolder" role="button" aria-pressed="true">Рекомендуемые</a>
+                    </form>
+                    <div class="col" style="width: 5px;"></div>
+                    <form action="{{ url_for('map.process_choice_created') }}" method="POST">
+                        <a href="{{ url_for('map.index') }}" class="btn btn-info fw-bolder" role="button" aria-pressed="true">Созданные</a>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
