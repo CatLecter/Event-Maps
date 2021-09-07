@@ -66,23 +66,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="height: 5px"></div>
-            </div>
-            <div style="width: 100%">
-                <h6 align="left">Отобразить события:</h6>
-                <div class="btn-group">
-                    <form action="{{ url_for('map.process_choice_all') }}" method="POST">
-                        <a href="{{ url_for('map.index') }}" class="btn btn-primary fw-bolder" role="button" aria-pressed="true">Все</a>
-                    </form>
-                    <div class="col" style="width: 5px;"></div>
-                    <form action="{{ url_for('map.process_choice_recommended') }}" method="POST">
-                        <a href="{{ url_for('map.index') }}" class="btn btn-secondary fw-bolder" role="button" aria-pressed="true">Рекомендуемые</a>
-                    </form>
-                    <div class="col" style="width: 5px;"></div>
-                    <form action="{{ url_for('map.process_choice_created') }}" method="POST">
-                        <a href="{{ url_for('map.index') }}" class="btn btn-info fw-bolder" role="button" aria-pressed="true">Созданные</a>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

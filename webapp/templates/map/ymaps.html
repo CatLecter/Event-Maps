@@ -2,6 +2,20 @@
 
 {% block content %}
     <div class="content-block__column">
+        <div style="width: 100%">
+            <div class="btn-group">
+                <a href="{{ url_for('map.all_events') }}" class="btn btn-primary fw-bolder" role="button" aria-pressed="true" style="color: black; font-family: Arial, Verdana">
+                    Все события
+                </a>
+                <a href="{{ url_for('map.index') }}" class="btn btn-secondary fw-bolder" role="button" aria-pressed="true" style="color: black; font-family: Arial, Verdana">
+                    Рекомендуемые события
+                </a>
+                <a href="{{ url_for('map.my_events') }}" class="btn btn-info fw-bolder" role="button" aria-pressed="true" style="color: black; font-family: Arial, Verdana">
+                    Созданные мной события
+                </a>
+            </div>
+        </div>
+        <div class="row" style="height: 5px;"></div>
         <div
             class="container_map"
             id="events_map"
