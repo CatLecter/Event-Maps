@@ -1,13 +1,8 @@
-import json
-import os
-
 from flask_login import current_user
 from flask import Blueprint, redirect, render_template, url_for
-from pymongo import MongoClient
 
 from webapp.config import MONGO_LINK
 from webapp.map.utils import fetch_coordinates
-from webapp.map.forms import ChoiceAllForm, ChoiceRecommendedForm, ChoiceCreatedForm
 from webapp.event.models import Event
 from webapp.event.balloon_content import create_ballon_json
 
@@ -29,7 +24,7 @@ def index():
     for event in created_events:
         user_events.append(f"{event.start_date} - {event.header}")
     return render_template(
-        "map/ymaps.html",
+        "content/content.html",
         page_title=title,
         zoom=16,
         lat=coordinate[1],
@@ -54,7 +49,7 @@ def all_events():
     for event in created_events:
         user_events.append(f"{event.start_date} - {event.header}")
     return render_template(
-        "map/ymaps.html",
+        "content/content.html",
         page_title=title,
         zoom=16,
         lat=coordinate[1],
@@ -79,7 +74,7 @@ def my_events():
     for event in created_events:
         user_events.append(f"{event.start_date} - {event.header}")
     return render_template(
-        "map/ymaps.html",
+        "content/content.html",
         page_title=title,
         zoom=16,
         lat=coordinate[1],
