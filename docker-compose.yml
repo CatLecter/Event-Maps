@@ -1,0 +1,32 @@
+services:
+  event_db:
+    container_name: event_db
+    image: postgres:14.3-bullseye
+    restart: on-failure
+    env_file:
+      - ./event_db/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - event_db:/var/lib/postgresql/data
+#      - ./event_db/sql_scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d events" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  server:
+    build: ./server/
+    restart: always
+    env_file:
+      - ./server/.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      event_db:
+        condition: service_healthy
+
+volumes:
+  event_db:
