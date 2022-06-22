@@ -1,8 +1,6 @@
 from datetime import datetime
-from sqlalchemy.orm import relationship
 
 from webapp.db import db
-
 
 event_tags = db.Table(
     "event_tags",
@@ -22,7 +20,8 @@ class Event(db.Model):
     event_url = db.Column(db.String, default="#")
     avatar_url = db.Column(
         db.String,
-        default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU",
+        default="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-\
+                hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU",
     )
     address = db.Column(db.String, nullable=False, index=True)
     contacts = db.Column(db.String)

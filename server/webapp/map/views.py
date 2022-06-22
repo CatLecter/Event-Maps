@@ -1,10 +1,8 @@
-from flask_login import current_user
 from flask import Blueprint, redirect, render_template, url_for
-
-from webapp.config import MONGO_LINK
-from webapp.map.utils import fetch_coordinates
-from webapp.event.models import Event
+from flask_login import current_user
 from webapp.event.balloon_content import create_ballon_json
+from webapp.event.models import Event
+from webapp.map.utils import fetch_coordinates
 
 blueprint = Blueprint("map", __name__)
 

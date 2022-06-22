@@ -1,10 +1,9 @@
 from datetime import datetime
-from flask_login import UserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
 
+from flask_login import UserMixin
 from webapp.db import db
 from webapp.event.models import Event
-
+from werkzeug.security import check_password_hash, generate_password_hash
 
 users_tags = db.Table(
     "user_tags",
@@ -24,12 +23,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String)
     create_date = db.Column(db.DateTime, default=datetime.utcnow)
     address = db.Column(db.String)
-    tag = db.relationship(
-        "Tag",
-        secondary=users_tags,
-        backref="user",
-        lazy="dynamic"
-    )
+    tag = db.relationship("Tag", secondary=users_tags, backref="user", lazy="dynamic")
     path_to_avatar = db.Column(db.String)
     role = db.Column(db.String(10), index=True, default="user")
 
