@@ -1,13 +1,13 @@
-from config import (
+from flask import Flask
+from flask_login import LoginManager
+from flask_migrate import Migrate
+from webapp.admin.views import blueprint as admin_blueprint
+from webapp.config import (
     REMEMBER_COOKIE_DURATION,
     SECRET_KEY,
     SQLALCHEMY_DATABASE_URI,
     SQLALCHEMY_TRACK_MODIFICATIONS,
 )
-from flask import Flask
-from flask_login import LoginManager
-from flask_migrate import Migrate
-from webapp.admin.views import blueprint as admin_blueprint
 from webapp.db import db
 from webapp.event.views import blueprint as event_blueprint
 from webapp.map.views import blueprint as map_blueprint
