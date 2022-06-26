@@ -1,6 +1,7 @@
 services:
   db:
-    container_name: event_db
+    container_name: db
+    hostname: db
     image: postgres:14.3-bullseye
     restart: on-failure
     env_file:
@@ -27,7 +28,7 @@ services:
         condition: service_healthy
 
   nginx:
-    image: nginx:1.22.0
+    image: nginx:1.23.0
     container_name: nginx
     restart: on-failure
     volumes:
