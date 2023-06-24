@@ -1,9 +1,3 @@
-from config import (
-    REMEMBER_COOKIE_DURATION,
-    SECRET_KEY,
-    SQLALCHEMY_DATABASE_URI,
-    SQLALCHEMY_TRACK_MODIFICATIONS,
-)
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -18,10 +12,7 @@ from webapp.user.views import blueprint as user_blueprint
 
 def create_app():
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-    app.config["SECRET_KEY"] = SECRET_KEY
-    app.config["REMEMBER_COOKIE_DURATION"] = REMEMBER_COOKIE_DURATION
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = SQLALCHEMY_TRACK_MODIFICATIONS
+    app.config.from_pyfile("config.py")
     db.init_app(app)
     migrate = Migrate(app, db)  # noqa
 

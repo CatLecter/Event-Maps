@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from webapp.db import db
-from webapp.tag.models import Tag  # noqa
 
 event_tags = db.Table(
     "event_tags",

@@ -21,7 +21,6 @@ types-requests = "^2.27.30"
 mypy = "^0.961"
 gevent = "^21.12.0"
 uvicorn = "^0.17.6"
-python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
