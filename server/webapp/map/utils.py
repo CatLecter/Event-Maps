@@ -1,4 +1,5 @@
-import requests  # type: ignore[import]
+import requests
+
 from webapp.config import YANDEX_MAPS_API_KEY
 
 
