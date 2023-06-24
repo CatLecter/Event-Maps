@@ -1,5 +1,6 @@
 from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import current_user
+
 from webapp.db import db
 from webapp.event.balloon_content import add_balloonContent
 from webapp.event.forms import EventRegForm
@@ -32,11 +33,8 @@ def process_event_reg():
             second_header=form.second_header.data,
             address=form.address.data,
             contacts=form.contacts.data,
-            start_date=f"{form.start_day.data}.{form.start_month.data}.\
-                        {form.start_year.data} г. в {form.start_hour.data}:\
-                        {form.start_minutes.data}",
-            end_date=f"{form.end_day.data}.{form.end_month.data}.{form.end_year.data} \
-                        г. в {form.end_hour.data}:{form.end_minutes.data}",
+            start_date=f"{form.start_day.data}.{form.start_month.data}.{form.start_year.data} г. в {form.start_hour.data}:{form.start_minutes.data}",
+            end_date=f"{form.end_day.data}.{form.end_month.data}.{form.end_year.data} г. в {form.end_hour.data}:{form.end_minutes.data}",
             event_url=form.event_url.data,
             avatar_url=form.avatar_url.data,
         )

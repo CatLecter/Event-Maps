@@ -14,6 +14,11 @@ RUN pip install --upgrade pip \
 COPY . .
 
 
-CMD gunicorn wsgi:app -b 0.0.0.0:5000 -w 3 --reload --log-level debug
+CMD gunicorn \
+    wsgi:app \
+    --workers 3 \
+    --bind 0.0.0.0:5000 \
+    --reload
+#    --log-level debug \
 #    --access-logfile=/var/jenkins_home/workspace/log/access_print.log \
 #    --error-logfile=/var/jenkins_home/workspace/log/error_print.log

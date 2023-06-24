@@ -1,7 +1,3 @@
-from gevent import monkey
-
-monkey.patch_all()
-
-from webapp import create_app  # noqa: ignore[import]
+from webapp import create_app
 
 app = create_app()

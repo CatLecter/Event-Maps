@@ -2,6 +2,7 @@ import json
 import os
 
 from pymongo import MongoClient
+
 from webapp.config import MONGO_LINK
 from webapp.map.utils import fetch_coordinates
 
@@ -21,8 +22,7 @@ def add_balloonContent(
     second_header,
     contacts,
     creator_login,
-    avatar_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-"
-    "hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU",
+    avatar_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU",
     description="Описание отсутствует",
     tags=[],
 ):
@@ -36,13 +36,9 @@ def add_balloonContent(
         "id": event_id,
         "geometry": {"type": "Point", "coordinates": [latitude, longitude]},
         "properties": {
-            "balloonContentHeader": f'<a href = "{event_url}">{header}</a><br><span \
-                                    class="description">{second_header}</span>',
-            "balloonContentBody": f'<img src="{avatar_url}" width="200"><br/><a \
-                                    href="{contacts}">{contacts}</a><br/>\
-                                    <b>{address}</b><br/>{description}',
-            "balloonContentFooter": '<a class="btn btn-warning" href="#" \
-                                    role="button">Принять участие</a>',
+            "balloonContentHeader": f'<a href = "{event_url}">{header}</a><br><span class="description">{second_header}</span>',
+            "balloonContentBody": f'<img src="{avatar_url}" width="200"><br/><a href="{contacts}">{contacts}</a><br/><b>{address}</b><br/>{description}',
+            "balloonContentFooter": f'<a class="btn btn-warning" href="#" role="button">Принять участие</a>',
             "hintContent": f"{tags}",
         },
     }
