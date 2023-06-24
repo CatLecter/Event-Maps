@@ -1,11 +1,12 @@
 from datetime import datetime
 
-from db import db
-from event.balloon_content import add_balloon_content
-from event.forms import EventRegForm
-from event.models import Event
 from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import current_user
+
+from db import db
+from forms.events import EventRegForm
+from models.events import Event
+from utils.balloon_content import add_balloon_content
 
 blueprint = Blueprint('event', __name__, url_prefix='/event')
 

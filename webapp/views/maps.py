@@ -1,8 +1,9 @@
-from event.balloon_content import create_ballon_json
-from event.models import Event
 from flask import Blueprint, redirect, render_template, url_for
 from flask_login import current_user
-from map.utils import fetch_coordinates
+
+from models.events import Event
+from utils.balloon_content import create_ballon_json
+from utils.geo import fetch_coordinates
 
 blueprint = Blueprint('map', __name__)
 

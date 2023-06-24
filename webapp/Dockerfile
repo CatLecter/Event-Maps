@@ -16,6 +16,7 @@ RUN pip --no-cache-dir install  \
     Flask-Login==0.6.2 \
     Flask-SQLAlchemy==3.0.5 \
     Flask-WTF==1.1.1 \
+    GeoAlchemy2==0.13.3 \
     gunicorn==20.1.0 \
     psycopg2-binary==2.9.6 \
     pymongo==4.4.0 \

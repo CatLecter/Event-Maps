@@ -4,13 +4,13 @@ from dotenv import find_dotenv, load_dotenv
 from flask import Flask
 from flask_login import LoginManager
 
-from admin.views import blueprint as admin_blueprint
 from db import db
-from event.views import blueprint as event_blueprint
-from map.views import blueprint as map_blueprint
-from news.views import blueprint as news_blueprint
-from user.models import User
-from user.views import blueprint as user_blueprint
+from models.users import User
+from views.admin import blueprint as admin_blueprint
+from views.events import blueprint as event_blueprint
+from views.maps import blueprint as map_blueprint
+from views.news import blueprint as news_blueprint
+from views.users import blueprint as user_blueprint
 
 load_dotenv(dotenv_path=find_dotenv(filename='.env'))
 

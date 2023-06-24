@@ -1,9 +1,10 @@
 import json
 import os
 
-from map.utils import fetch_coordinates
 from pymongo import MongoClient
 from pymongo.collection import Collection
+
+from utils.geo import fetch_coordinates
 
 
 def mongo_connect() -> Collection:
@@ -14,16 +15,16 @@ def mongo_connect() -> Collection:
 
 
 def add_balloon_content(
-    address,
-    event_id,
-    event_url,
-    header,
-    second_header,
-    contacts,
-    creator_login,
-    avatar_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU',
-    description='Описание отсутствует',
-    tags=[],
+        address,
+        event_id,
+        event_url,
+        header,
+        second_header,
+        contacts,
+        creator_login,
+        avatar_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSezXuEt5Tsu-hGhmEmHrEq_cr2Ec_3ds1gdXOnsxoYZDJfV33AKn8c2kh1OW6_BLzuuFk&usqp=CAU',
+        description='Описание отсутствует',
+        tags=[],
 ):
     coordinate = fetch_coordinates(address)
     latitude = coordinate[1]
