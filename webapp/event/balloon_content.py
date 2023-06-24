@@ -13,7 +13,7 @@ def mongo_connect() -> Collection:
     return collection
 
 
-def add_balloonContent(
+def add_balloon_content(
     address,
     event_id,
     event_url,

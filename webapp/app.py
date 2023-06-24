@@ -1,12 +1,12 @@
 import os
 
-from admin.views import blueprint as admin_blueprint
-from db import db
 from dotenv import find_dotenv, load_dotenv
-from event.views import blueprint as event_blueprint
 from flask import Flask
 from flask_login import LoginManager
-from flask_migrate import Migrate
+
+from admin.views import blueprint as admin_blueprint
+from db import db
+from event.views import blueprint as event_blueprint
 from map.views import blueprint as map_blueprint
 from news.views import blueprint as news_blueprint
 from user.models import User
@@ -23,7 +23,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
     db.init_app(app)
-    migrate = Migrate(app, db)  # noqa
 
     login_manager = LoginManager()
     login_manager.init_app(app)
@@ -40,8 +39,3 @@ def create_app():
         return User.query.get(user_id)
 
     return app
-
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run(host='127.0.0.1', port=8000, debug=True)

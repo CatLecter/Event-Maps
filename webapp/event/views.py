@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from db import db
-from event.balloon_content import add_balloonContent
+from event.balloon_content import add_balloon_content
 from event.forms import EventRegForm
 from event.models import Event
 from flask import Blueprint, flash, redirect, render_template, url_for
@@ -55,7 +55,7 @@ def process_event_reg():
         )
         db.session.add(new_event)
         db.session.commit()
-        add_balloonContent(
+        add_balloon_content(
             form.address.data,
             new_event.id,
             form.event_url.data,

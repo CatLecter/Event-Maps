@@ -21,6 +21,7 @@ def index():
         created_events = [created_events]
 
     create_ballon_json(created_events)
+
     user_events = []
     for event in created_events:
         user_events.append(f'{event.start_date} - {event.header}')
@@ -46,6 +47,7 @@ def all_events():
     created_events = Event.query.order_by(Event.id).all()
 
     create_ballon_json(created_events)
+
     user_events = []
     for event in created_events:
         user_events.append(f'{event.start_date} - {event.header}')
