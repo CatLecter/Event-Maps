@@ -1,0 +1,18 @@
+{% extends "root/root.html" %}
+
+{% block content %}
+    <div hx-target="this">
+        <div>
+            <img src="{{ current_user.photo }}" class="photo"/>
+            <h4>{{ current_user.full_name }}</h4>
+            <p>Login: {{ current_user.login }}</p>
+            <p>E-mail: {{ current_user.email }}</p>
+            <p>Location: {{ current_user.location }}</p>
+        </div>
+        <form action="{{ url_for('home.home') }}" method="GET">
+            <button hx-get="{{ url_for('home.home') }}" hx-push-url="/" hx-swap="outerHTML">
+                Home page
+            </button>
+        </form>
+    </div>
+{% endblock %}

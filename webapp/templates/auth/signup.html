@@ -1,0 +1,34 @@
+{% extends 'root/root.html' %}
+
+{% block content %}
+    <div hx-target="this">
+        <form action="{{ url_for('user.add_user') }}" method="POST">
+            <h2 class="auth auth__signup">Sign up</h2>
+            {{ form.hidden_tag() }}
+            <div>{{ form.login() }}</div>
+            <div>{{ form.full_name() }}</div>
+            <div>{{ form.phone() }}</div>
+            <div>{{ form.photo() }}</div>
+            <div>{{ form.latitude() }}</div>
+            <div>{{ form.longitude() }}</div>
+            <div>{{ form.email() }}</div>
+            <div>{{ form.password() }}</div>
+            <div>{{ form.repeat_password() }}</div>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <div>
+            <form action="{{ url_for('auth.sign_in') }}" method="GET">
+                <button hx-get="{{ url_for('auth.sign_in') }}" hx-push-url="/signin" hx-swap="outerHTML">
+                    Sign in
+                </button>
+            </form>
+            <form action="{{ url_for('home.home') }}" method="GET">
+                <button hx-get="{{ url_for('home.home') }}" hx-push-url="/" hx-swap="outerHTML">
+                    Home page
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
