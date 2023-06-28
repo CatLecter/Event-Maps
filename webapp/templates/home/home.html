@@ -1,0 +1,19 @@
+{% extends 'root/root.html' %}
+
+{% block content %}
+    <div hx-target="this">
+        <h1 class="home">Home Page</h1>
+        <div>
+            <form action="{{ url_for('auth.sign_in') }}" method="GET">
+                <button hx-get="{{ url_for('auth.sign_in') }}" hx-push-url="/signin" hx-swap="outerHTML">
+                    Sign in
+                </button>
+            </form>
+            <form action="{{ url_for('auth.sign_up') }}" method="GET">
+                <button hx-get="{{ url_for('auth.sign_up') }}" hx-push-url="/signup" hx-swap="outerHTML">
+                    Sign up
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
